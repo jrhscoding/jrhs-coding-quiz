@@ -25,28 +25,27 @@ var questionTwo = questionsArr[1].question;
 
 var questionThree = questionsArr[2].question;
 
+var printQuestionTwo = function () {
 
-// function to return the question onto the page
-var printQuestion = function () {
-    const printContainer = document.createElement("div");
+    let printContainer = document.createElement("div");
     printContainer.className = "Questions";
-    printContainer.innerHTML = "<h3>" + questionOne + "</h3>";
+    printContainer.innerHTML = "<h3>" + questionTwo + "</h3>";
     console.log(printContainer);
 
 
-    const answerWrapper = document.createElement("ul");
+    let answerWrapper = document.createElement("ul");
     answerWrapper.className = "answer-wrapper";
     printContainer.appendChild(answerWrapper);
 
-    const listQuestion1 = document.createElement("li");
+    let listQuestion1 = document.createElement("li");
     listQuestion1.className = "answers";
     listQuestion1.id = "correct";
-    listQuestion1.textContent = questionsArr[0].correct;
+    listQuestion1.textContent = questionsArr[1].correct;
     answerWrapper.appendChild(listQuestion1);
 
-    const listQuestion2 = document.createElement("li");
+    let listQuestion2 = document.createElement("li");
     listQuestion2.className = "answers";
-    listQuestion2.textContent = questionsArr[0].incorrectOne;
+    listQuestion2.textContent = questionsArr[1].incorrectOne;
     answerWrapper.appendChild(listQuestion2);
 
     answerWrapper.addEventListener("click", function(event) {
@@ -58,12 +57,50 @@ var printQuestion = function () {
         };
     }
     )
-    //    testing
-
-    //    end testing
 
     return printContainer;
 };
+
+
+// function to return the question onto the page
+var printQuestion = function () {
+    let printContainer = document.createElement("div");
+    printContainer.className = "Questions";
+    printContainer.innerHTML = "<h3>" + questionOne + "</h3>";
+    console.log(printContainer);
+
+
+    let answerWrapper = document.createElement("ul");
+    answerWrapper.className = "answer-wrapper";
+    printContainer.appendChild(answerWrapper);
+
+    let listQuestion1 = document.createElement("li");
+    listQuestion1.className = "answers";
+    listQuestion1.id = "correct";
+    listQuestion1.textContent = questionsArr[0].correct;
+    answerWrapper.appendChild(listQuestion1);
+
+    let listQuestion2 = document.createElement("li");
+    listQuestion2.className = "answers";
+    listQuestion2.textContent = questionsArr[0].incorrectOne;
+    answerWrapper.appendChild(listQuestion2);
+
+    answerWrapper.addEventListener("click", function(event) {
+        
+        if (event.target.id == "correct") {
+            alert("correct!");
+            questionContainer.appendChild(printQuestionTwo());
+        } else {
+            alert("wrong!");
+            questionContainer.appendChild(printQuestionTwo());
+        };
+    }
+    )
+
+    return printContainer;
+};
+
+
 
 // added event listener to print question onto page after clicking start
 startButton.addEventListener("click", function () {
