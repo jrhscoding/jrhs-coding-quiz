@@ -1,0 +1,34 @@
+body {
+    background-color: antiquewhite;
+}
+
+h1 {
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+#start {
+    background-color: forestgreen;
+    width: 200px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
+    margin: auto;
+}
+
+h3 {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.answers {
+    text-align: center;
+    list-style: none;
+}
