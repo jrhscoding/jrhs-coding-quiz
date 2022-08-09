@@ -161,7 +161,28 @@ startButton.addEventListener("click", function () {
 
 function gameOver() {
     var userName = window.prompt("Enter your name:");
-    console.log(score);
+    thisGame = {
+        name: userName,
+        score: score
+        
+    }
+    // function retrieveInfo () {
+        var prevHighScore = JSON.parse(localStorage.getItem("highscore"));
+        console.log(prevHighScore);
+
+
+    if (prevHighScore === null) {
+        alert("Congratulations! You have a new high score!")
+        localStorage.setItem("highscore", JSON.stringify(thisGame));
+    } else if (prevHighScore.score < thisGame.score) {
+        alert("Congratulations! You have a new high score!")
+        localStorage.setItem("highscore", JSON.stringify(thisGame));
+    } else if (prevHighScore.score == thisGame.score) {
+        alert("You and " + prevHighScore.name + " are tied with the highest score!")
+    } else {
+        alert("Unfortunately " + thisGame.score + " was not good enough to beat " + prevHighScore.name + "'s score of " + prevHighScore.score)
+    }
+    
 };
 
 
