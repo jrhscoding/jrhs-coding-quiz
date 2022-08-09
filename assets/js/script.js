@@ -66,6 +66,8 @@ var printQuestion = function () {
             alert("wrong!");
             questionContainer.appendChild(printQuestionTwo());
         };
+        let child = this.getElementsByClassName(".Questions");
+        printContainer.remove(child);
     }
     )
 
@@ -105,6 +107,8 @@ var printQuestionTwo = function () {
             alert("wrong!");
             questionContainer.appendChild(printQuestionThree());
         };
+        let child = this.getElementsByClassName(".Questions");
+        printContainer.remove(child);
     }
     )
 
