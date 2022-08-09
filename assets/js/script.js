@@ -1,5 +1,10 @@
 var questionContainer = document.querySelector(".question-container");
 var startButton = document.querySelector("#start");
+var playerInfoArr = [];
+// let currentPlayerInfo = {
+//     score: 0
+// };
+score = 0;
 
 questionsArr = [
     {
@@ -55,6 +60,7 @@ var printQuestion = function () {
         
         if (event.target.id == "correct") {
             alert("correct!");
+            score = + 5;
             questionContainer.appendChild(printQuestionTwo());
         } else {
             alert("wrong!");
@@ -92,10 +98,11 @@ var printQuestionTwo = function () {
     answerWrapper.addEventListener("click", function(event) {
         console.log(event.target.id)
         if (event.target.id == "correct") {
-            alert("correct! Game over!");
+            alert("correct!");
+            score = score + 5;
             questionContainer.appendChild(printQuestionThree());
         } else {
-            alert("wrong! Game over!");
+            alert("wrong!");
             questionContainer.appendChild(printQuestionThree());
         };
     }
@@ -132,9 +139,12 @@ var printQuestionThree = function () {
     answerWrapper.addEventListener("click", function(event) {
         console.log(event.target.id)
         if (event.target.id == "correct") {
-            alert("correct!");
+            alert("correct! game over!");
+            score = score + 5;
+            gameOver();
         } else {
-            alert("wrong!");
+            alert("wrong! game over!");
+            gameOver();
         };
     }
     )
@@ -146,6 +156,13 @@ var printQuestionThree = function () {
 startButton.addEventListener("click", function () {
     questionContainer.appendChild(printQuestion());
 });
+
+//game over function
+
+function gameOver() {
+    var userName = window.prompt("Enter your name:");
+    console.log(score);
+};
 
 
 // step1 creat div containing question as h2 and correct and incorrect as li's
