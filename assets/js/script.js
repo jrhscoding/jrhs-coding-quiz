@@ -1,6 +1,7 @@
 var questionContainer = document.querySelector(".question-container");
 var startButton = document.querySelector("#start");
 var playerInfoArr = [];
+var count = 30;
 // let currentPlayerInfo = {
 //     score: 0
 // };
@@ -64,6 +65,7 @@ var printQuestion = function () {
             questionContainer.appendChild(printQuestionTwo());
         } else {
             alert("wrong!");
+            timeLeft = timeLeft - 5;
             questionContainer.appendChild(printQuestionTwo());
         };
         let child = this.getElementsByClassName(".Questions");
@@ -105,6 +107,7 @@ var printQuestionTwo = function () {
             questionContainer.appendChild(printQuestionThree());
         } else {
             alert("wrong!");
+            timeLeft = timeLeft - 5;
             questionContainer.appendChild(printQuestionThree());
         };
         let child = this.getElementsByClassName(".Questions");
@@ -159,6 +162,7 @@ var printQuestionThree = function () {
 // added event listener to print question onto page after clicking start
 startButton.addEventListener("click", function () {
     questionContainer.appendChild(printQuestion());
+    countdown();
 });
 
 //game over function
@@ -188,6 +192,23 @@ function gameOver() {
     }
     
 };
+
+var timeLeft = 30;
+function countdown() {
+    
+  
+    var timeInterval = setInterval(function () {
+        timeLeft--;
+        console.log(timeLeft);
+        if (timeLeft <= 0) {
+            clearInterval(timeInterval);
+            gameOver();
+        }
+    },1000)
+
+    timeInterval();
+}
+
 
 
 // step1 creat div containing question as h2 and correct and incorrect as li's
