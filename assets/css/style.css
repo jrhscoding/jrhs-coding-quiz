@@ -9,6 +9,10 @@ h1 {
     margin: auto;
 }
 
+#timer {
+    margin-right: 100px;
+}
+
 .header {
     display: flex;
     text-align: center;

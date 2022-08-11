@@ -1,27 +1,25 @@
 var questionContainer = document.querySelector(".question-container");
 var startButton = document.querySelector("#start");
-var playerInfoArr = [];
-var count = 30;
-// let currentPlayerInfo = {
-//     score: 0
-// };
+
+var timeLeft = 30;
+
 score = 0;
 
 questionsArr = [
     {
-        question: "What color is the sky?",
-        correct: "Blue",
-        incorrectOne: "Red"
+        question: "Which symbol is used for comments in JavaScript?",
+        correct: "//",
+        incorrectOne: "<!--  -->"
     },
     {
-        question: "Whom is Luke Skywalker's father?",
-        correct: "Darth Vader",
-        incorrectOne: "Steven Colbert"
+        question: "In order for a variable to be able to change, which of the following would you use?",
+        correct: "Let",
+        incorrectOne: "Const"
     },
     {
-        question: "Is game of thrones season 7 good?",
-        correct: "No",
-        incorrectOne: "Yes"
+        question: "What is the most current version of JavaScript",
+        correct: "ES6",
+        incorrectOne: "ES4"
     }
 ];
 
@@ -30,9 +28,6 @@ var questionOne = questionsArr[0].question;
 var questionTwo = questionsArr[1].question;
 
 var questionThree = questionsArr[2].question;
-
-
-
 
 // function to return the question onto the page
 var printQuestion = function () {
@@ -57,8 +52,8 @@ var printQuestion = function () {
     listQuestion2.textContent = questionsArr[0].incorrectOne;
     answerWrapper.appendChild(listQuestion2);
 
-    answerWrapper.addEventListener("click", function(event) {
-        
+    answerWrapper.addEventListener("click", function (event) {
+
         if (event.target.id == "correct") {
             alert("correct!");
             score = + 5;
@@ -99,7 +94,7 @@ var printQuestionTwo = function () {
     listQuestion2.textContent = questionsArr[1].incorrectOne;
     answerWrapper.appendChild(listQuestion2);
 
-    answerWrapper.addEventListener("click", function(event) {
+    answerWrapper.addEventListener("click", function (event) {
         console.log(event.target.id)
         if (event.target.id == "correct") {
             alert("correct!");
@@ -117,8 +112,6 @@ var printQuestionTwo = function () {
 
     return printContainer;
 };
-
-
 
 var printQuestionThree = function () {
 
@@ -143,7 +136,7 @@ var printQuestionThree = function () {
     listQuestion2.textContent = questionsArr[2].incorrectOne;
     answerWrapper.appendChild(listQuestion2);
 
-    answerWrapper.addEventListener("click", function(event) {
+    answerWrapper.addEventListener("click", function (event) {
         console.log(event.target.id)
         if (event.target.id == "correct") {
             alert("correct! game over!");
@@ -162,8 +155,27 @@ var printQuestionThree = function () {
 // added event listener to print question onto page after clicking start
 startButton.addEventListener("click", function () {
     questionContainer.appendChild(printQuestion());
+    startButton.style.display = 'none';
     countdown();
 });
+
+var time = document.querySelector("#timer");
+
+function countdown() {
+
+
+    var timeInterval = setInterval(function () {
+        timeLeft--;
+        time.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+            clearInterval(timeInterval);
+            gameOver();
+        }
+    }, 1000)
+
+    timeInterval();
+}
 
 //game over function
 
@@ -172,12 +184,10 @@ function gameOver() {
     thisGame = {
         name: userName,
         score: score
-        
     }
     // function retrieveInfo () {
-        var prevHighScore = JSON.parse(localStorage.getItem("highscore"));
-        console.log(prevHighScore);
-
+    var prevHighScore = JSON.parse(localStorage.getItem("highscore"));
+    console.log(prevHighScore);
 
     if (prevHighScore === null) {
         alert("Congratulations! You have a new high score!")
@@ -190,27 +200,4 @@ function gameOver() {
     } else {
         alert("Unfortunately " + thisGame.score + " was not good enough to beat " + prevHighScore.name + "'s score of " + prevHighScore.score)
     }
-    
 };
-
-var timeLeft = 30;
-function countdown() {
-    
-  
-    var timeInterval = setInterval(function () {
-        timeLeft--;
-        console.log(timeLeft);
-        if (timeLeft <= 0) {
-            clearInterval(timeInterval);
-            gameOver();
-        }
-    },1000)
-
-    timeInterval();
-}
-
-
-
-// step1 creat div containing question as h2 and correct and incorrect as li's
-// step 2 target the li with the "correct" id 
-// step 3 target question to do nothing else window incorrect
