@@ -180,7 +180,7 @@ function countdown() {
 //game over function
 
 function gameOver() {
-    var userName = window.prompt("Enter your name:");
+    var userName = window.prompt("Enter your initials:");
     thisGame = {
         name: userName,
         score: score
